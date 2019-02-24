@@ -1,12 +1,10 @@
 package eu.pyprincess.weatherapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,16 +15,15 @@ public class WeatherController {
     private WeatherUserRepository userrepo;
     @Autowired
     private CityRepository cityrepo;
-
-    /* Return the user info from GitHub Authentication */
-    @RequestMapping("/user")
-    public Principal user(Principal principal) {
-        System.out.println(principal.getName());
-        return principal;
-    }
+    @Autowired
+    private WeatherService weatherservice;
 
     // Give weather data of the favourite cities
+    @RequestMapping(value="/api/favourites/weather", method= RequestMethod.GET, produces="application/json")
+    public String favouriteCityData(Principal principal){
 
+        return null;
+    }
 
 
     // Search location
@@ -40,6 +37,17 @@ public class WeatherController {
     }
 
     // Search weather data of the location
+    @RequestMapping(value="/api/weather", method= RequestMethod.GET, produces="application/json")
+    public String getWeather(@RequestParam(value = "cityCode", required = true) Long cityCode){
+        City city = cityrepo.getOne(cityCode);
+        String response;
+        try {
+            response = weatherservice.askWeatherByCityCode(city);
+        } catch (Exception e){
+            response = "Cannot find data!";
+        }
+        return response;
+    }
 
     // Search weather data by the favourite city code
 
@@ -69,4 +77,7 @@ public class WeatherController {
         user.removeCity(city);
         userrepo.save(user);
     }
+
+
+
 }
