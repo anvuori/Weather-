@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WeatherService {
@@ -35,6 +36,21 @@ public class WeatherService {
     /* Api call to get several cities */
     //todo: !!!!
     public String askWeatherByList(List<City> cityList) throws Exception{
-        return null;
+
+        HttpURLConnection connection = null;
+        String cityCodes = cityList.stream().map(City::getCityCode).map(String::valueOf).collect(Collectors.joining(","));
+        String stringurl = "http://api.openweathermap.org/data/2.5/group?id=" + cityCodes + "&units=metric&appid=" + this.apiKey;
+        URL url = new URL(stringurl);
+        connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        // Read the response
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String line;
+        StringBuffer response = new StringBuffer();
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+            response.append(line);
+        }
+        return response.toString();
     }
 }

@@ -21,7 +21,9 @@ public class WeatherController {
     // Give weather data of the favourite cities
     @RequestMapping(value="/api/favourites/weather", method= RequestMethod.GET, produces="application/json")
     public String favouriteCityData(Principal principal){
-
+        WeatherUser user = getUser(principal);
+        List<City> cities = user.getFavouriteCities();
+        // API call for several cities
         return null;
     }
 
@@ -49,23 +51,15 @@ public class WeatherController {
         return response;
     }
 
-    // Search weather data by the favourite city code
+    // todo: Search weather data by the favourite city code
 
     // Add a new favourite city
     @RequestMapping(value="/api/favourites/add", method= RequestMethod.GET, produces="application/json")
     public void addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
-        String username = principal.getName();
         City city = cityrepo.getOne(cityCode);
-        if(userrepo.existsById(username)){
-            WeatherUser user = userrepo.getOne(username);
-            user.addCity(city);
-            userrepo.save(user);
-        }
-        else{
-            WeatherUser user = new WeatherUser(username);
-            user.addCity(city);
-            userrepo.save(user);
-        }
+        WeatherUser user = getUser(principal);
+        user.addCity(city);
+        userrepo.save(user);
     }
 
     // Remove favourite city
@@ -78,6 +72,18 @@ public class WeatherController {
         userrepo.save(user);
     }
 
-
+    public WeatherUser getUser(Principal principal){
+        String username = principal.getName();
+        WeatherUser user;
+        if(userrepo.existsById(username)){
+            user = userrepo.getOne(username);
+            userrepo.save(user);
+        }
+        else{
+            user = new WeatherUser(username);
+            userrepo.save(user);
+        }
+        return user;
+    }
 
 }

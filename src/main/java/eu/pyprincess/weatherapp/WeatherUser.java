@@ -2,13 +2,14 @@ package eu.pyprincess.weatherapp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class WeatherUser {
     @Id
     private String name;
-    private List<City> favouriteCities;
+    private List<City> favouriteCities = new ArrayList<>();
 
 
     public WeatherUser(){}
