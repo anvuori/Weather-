@@ -18,7 +18,11 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherservice;
 
-    // Give weather data of the favourite cities
+    /**
+     * Return weather data of user's favourite cities
+     * @param principal
+     * @return Weather data json of several cities as a string
+     */
     @RequestMapping(value="/api/favourites/weather", method= RequestMethod.GET, produces="application/json")
     public String favouriteCityData(Principal principal){
         WeatherUser user = getUser(principal);
@@ -33,7 +37,11 @@ public class WeatherController {
     }
 
 
-    // Search location
+    /**
+     * Search locations by a substring
+     * @param search - substring of the wanted location
+     * @return List of cities that has the substring
+     */
     @RequestMapping(value="/api/location", method= RequestMethod.GET, produces="application/json")
     public List<City> searchLocation(@RequestParam(value = "search", required = true) String search){
         List<City> cities = cityrepo.findAll();
@@ -43,7 +51,11 @@ public class WeatherController {
         return cities;
     }
 
-    // Search weather data of the location
+    /**
+     * Returns weather json data of the wanted location
+     * @param cityCode - the city id
+     * @return Weather data json of the city as a string
+     */
     @RequestMapping(value="/api/weather", method= RequestMethod.GET, produces="application/json")
     public String getWeather(@RequestParam(value = "cityCode", required = true) Long cityCode){
         City city = cityrepo.getOne(cityCode);
@@ -58,7 +70,11 @@ public class WeatherController {
 
     // todo: Search weather data by the favourite city code
 
-    // Add a new favourite city
+    /**
+     * Adds the user a new favourite city
+     * @param cityCode - the city id
+     * @param principal
+     */
     @RequestMapping(value="/api/favourites/add", method= RequestMethod.GET, produces="application/json")
     public void addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
         City city = cityrepo.getOne(cityCode);
@@ -67,7 +83,11 @@ public class WeatherController {
         userrepo.save(user);
     }
 
-    // Remove favourite city
+    /**
+     * Removes the city id from the user
+     * @param cityCode -the city id
+     * @param principal
+     */
     @RequestMapping(value="/api/favourites/remove", method= RequestMethod.GET, produces="application/json")
     public void removeCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
         String username = principal.getName();
@@ -77,6 +97,11 @@ public class WeatherController {
         userrepo.save(user);
     }
 
+    /**
+     * Returns the username of the user if it exists. Creates the user if doesn't.
+     * @param principal
+     * @return WeatherUser
+     */
     public WeatherUser getUser(Principal principal){
         String username = principal.getName();
         WeatherUser user;

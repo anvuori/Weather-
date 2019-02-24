@@ -20,7 +20,10 @@ public class WeatherappApplicationTests {
 	public void contextLoads() {
 	}
 
-
+    /**
+     * Tests making an api call to one location weather data in WeatherService
+     *
+     */
 	@Test
 	public void testWeatherApiCall(){
 		City city = new City("Tampere", 634964L, new Country("FI"), 123, 122);
@@ -36,6 +39,10 @@ public class WeatherappApplicationTests {
 		System.out.println(response);
 	}
 
+    /**
+     * Tests making an api call to several location weather data in WeatherService
+     *
+     */
     @Test
     public void testWeatherApiCallList(){
         City city = new City("Tampere", 634964L, new Country("FI"), 123, 122);

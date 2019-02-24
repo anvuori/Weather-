@@ -16,18 +16,31 @@ public class WeatherUser {
 
     public WeatherUser(){}
 
+    /**
+     * Constructor
+     * @param name - username of the user
+     */
     public WeatherUser(String name) {
         this.name = name;
     }
 
+    /**
+     * Adds a favourite city to the user
+     * @param city
+     */
     public void addCity(City city){
         favouriteCities.add(city);
     }
 
+    /**
+     * Removes the city from the user
+     * @param city
+     */
     public void removeCity(City city){
         favouriteCities.remove(city);
     }
 
+    /* GETTERS AND SETTERS */
 
     public String getName() {
         return name;

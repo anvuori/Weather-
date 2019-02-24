@@ -20,6 +20,9 @@ public class WeatherappApplication {
 
 }
 
+/**
+ * DataGenerator generates initial data for in-memory database
+ */
 @Component
 class DataGenerator implements CommandLineRunner{
 
@@ -32,11 +35,12 @@ class DataGenerator implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         readCitiesFromJson();
-
     }
 
 
-    /* Loads location data from the json-file in resources-directory. */
+    /**
+     *  Loads location data from the json-file in resources-directory.
+     */
     public void readCitiesFromJson() {
         JSONTokener parser = new JSONTokener(Thread.currentThread().getContextClassLoader().getResourceAsStream("city.list.json"));
         JSONArray locations = new JSONArray(parser);
