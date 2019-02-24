@@ -47,8 +47,8 @@ public class WeatherController {
         List<City> cities = cityrepo.findAll();
         // Filter all the cities that contain the search
         // todo: make custom database query
-        cities.stream().filter(x -> x.getName().toLowerCase().contains(search.toLowerCase())).collect(Collectors.toList());
-        return cities;
+        List<City> result = cities.stream().filter(x -> x.getName().toLowerCase().contains(search.toLowerCase())).collect(Collectors.toList());
+        return result;
     }
 
     /**

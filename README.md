@@ -20,23 +20,35 @@ React test build ```npm start```
 
 Returns a json containing the locations that match the search
 
-#### GET /api/favourites
+`https://localhost:8080/api/location?search=Tampe`
 
-* Parameters: username (required)
+#### GET /api/favourites/weather
 
-Returns a json containing all the given user's favourited locations' weather data
+* Parameters: none
+
+Returns a json containing all the user's favourited locations' weather data
+
+`https://localhost:8080/api/favourites/weather`
 
 #### GET /api/weather
 
-* Parameters: location (required)
+* Parameters: cityCode
 
 Returns a json containing the given location's weather data
 
-#### POST /api/location/weather
+`https://localhost:8080/api/weather?cityCode=634964`
 
-* Payload: location (required)
+#### GET /api/location/add
 
-Returns a json containing the given location's weather data
+* Parameters: city
+
+`https://localhost:8080/api/location/add?city=634964`
+
+#### GET /api/location/remove
+
+* Parameters: city
+
+`https://localhost:8080/api/location/remove?city=634964`
 
 ### Tests
 
@@ -44,12 +56,12 @@ Unit and integration tests.
 
 ### Test data
 
-Demo loads automatically location data from [json](http://bulk.openweathermap.org/sample/city.list.json.gz).
+Demo loads automatically in-memory location data from [json](http://bulk.openweathermap.org/sample/city.list.json.gz).
 
 ### Server side
 
-REST api can be accessed in ```localhost:8080/api/```
+REST api can be accessed in `localhost:8080/api/`
 
 ### Client side
 
-Client is built with React and runs in port ```localhost:3000```.
+Client is built with React and runs in port `localhost:3000`.
