@@ -18,8 +18,6 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherservice;
 
-
-
     /**
      * Return weather data of user's favourite cities
      * @param principal
