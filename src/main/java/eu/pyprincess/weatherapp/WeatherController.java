@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class WeatherController {
@@ -29,6 +30,14 @@ public class WeatherController {
 
 
     // Search location
+    @RequestMapping(value="/api/location", method= RequestMethod.GET, produces="application/json")
+    public List<City> searchLocation(@RequestParam(value = "search", required = true) String search){
+        List<City> cities = cityrepo.findAll();
+        // Filter all the cities that contain the search
+        // todo: make custom database query
+        cities.stream().filter(x -> x.getName().toLowerCase().contains(search.toLowerCase())).collect(Collectors.toList());
+        return cities;
+    }
 
     // Search weather data of the location
 
@@ -59,6 +68,5 @@ public class WeatherController {
         WeatherUser user = userrepo.getOne(username);
         user.removeCity(city);
         userrepo.save(user);
-
     }
 }
