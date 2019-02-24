@@ -25361,6 +25361,9 @@ function (_Component) {
         id: "locationTarget"
       }, locat)), city.name && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherBlock__WEBPACK_IMPORTED_MODULE_2__["default"], {
         cityName: city.name,
+        pressure: city.main.pressure,
+        humidity: city.main.humidity,
+        description: city.weather[0].description,
         temperature: city.main.temp,
         weather: city.weather[0].main
       }), city.name && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -25490,9 +25493,12 @@ function (_Component) {
       var cityName = this.props.cityName;
       var temperature = this.props.temperature;
       var weather = this.props.weather;
+      var pressure = this.props.pressure;
+      var humidity = this.props.humidity;
+      var description = this.props.description;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "WeatherBlock"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, cityName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, temperature, " \xB0C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, weather)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, cityName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, temperature, " \xB0C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, weather, " , ", description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, pressure, " hPa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, humidity, " %")));
     }
   }]);
 
@@ -25578,6 +25584,9 @@ function (_Component) {
       var citie = this.state.cities.list.map(function (city) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
           cityName: city.name,
+          pressure: city.main.pressure,
+          humidity: city.main.humidity,
+          description: city.weather[0].description,
           temperature: city.main.temp,
           weather: city.weather[0].main
         });

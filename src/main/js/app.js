@@ -50,7 +50,7 @@ loadWeather(currentLocation){
               </p>
             </div>
             {city.name &&
-            <WeatherBlock cityName={city.name} temperature={city.main.temp} weather={city.weather[0].main} />
+              <WeatherBlock cityName={city.name} pressure={city.main.pressure} humidity={city.main.humidity} description={city.weather[0].description} temperature={city.main.temp} weather={city.weather[0].main} />
             }
             {city.name &&
             <a href={query} >Favourite</a>

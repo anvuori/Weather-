@@ -21,7 +21,7 @@ class WeatherBlockList extends Component {
   render() {
     console.table(this.state.cities);
     const citie = this.state.cities.list.map((city) =>
-      <WeatherBlock cityName={city.name} temperature={city.main.temp} weather={city.weather[0].main} />
+      <WeatherBlock cityName={city.name} pressure={city.main.pressure} humidity={city.main.humidity} description={city.weather[0].description} temperature={city.main.temp} weather={city.weather[0].main} />
     );
     return (
       <div className="WeatherBlocks">
