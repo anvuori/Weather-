@@ -29,12 +29,10 @@ loadWeather(currentLocation){
 }
 
   render() {
-    console.table(this.state);
     const locat = this.state.locations.map((currentLocation) => (
-    <button onClick={() => this.loadWeather(currentLocation)}> {currentLocation.name} <br/></button>
+    <button onClick={() => this.loadWeather(currentLocation)} key={currentLocation.cityCode}> {currentLocation.name} <br/></button>
   )
   );
-    console.table(this.state.currentLocation);
     const city = this.state.currentLocation;
     const query = "/api/favourites/add?city=" + city.id;
     return (
@@ -42,7 +40,7 @@ loadWeather(currentLocation){
         <header className="App-header">
           <h1>Weather!</h1>
             <div>
-              <label for="cities">Search for a location </label>
+              <label htmlFor="cities">Search for a location </label>
               <input type="text" id="location" /><br/>
               <input type="button" onClick={this.search} value="Search" />
               <p id="locationTarget">

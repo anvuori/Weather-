@@ -95,7 +95,7 @@
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".App {\n  text-align: center;\n}\n\n.App-header {\n  background-color: #282c34;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  font-size: calc(10px + 2vmin);\n  color: white;\n}\n\n.App-link {\n  color: #61dafb;\n}\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n#favourites{\n  width:35%;\n  float:left;\n}\n\n#root{\n  width:60%;\n  float:right;\n}\n\nul#nav  {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n    background-color: #333;\n    font-family: 'Roboto', sans-serif;\n}\n\nul#nav li {\n    float: right;\n}\n\nul#nav li a {\n    display: block;\n    color: white;\n    text-align: center;\n    padding: 14px 16px;\n    text-decoration: none;\n}\n\n/* Change the link color to #111 (black) on hover */\nul#nav li a:hover {\n    background-color:#FF4447;\n}\n", ""]);
+exports.push([module.i, ".App {\n  text-align: center;\n}\n\n.App-header {\n  background-color: #282c34;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  font-size: calc(10px + 2vmin);\n  color: white;\n}\n\n.App-link {\n  color: #61dafb;\n}\nbody {\n  margin: 0;\n  padding: 0;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\",\n    \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\",\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n#favourites{\n  width:35%;\n  float:left;\n  margin-left:auto;\n  margin-right:auto;\n}\n\n#root{\n  width:60%;\n  float:right;\n}\n\nul#nav  {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n    background-color: #333;\n    font-family: 'Roboto', sans-serif;\n}\n\nul#nav li {\n    float: right;\n}\n\nul#nav li a {\n    display: block;\n    color: white;\n    text-align: center;\n    padding: 14px 16px;\n    text-decoration: none;\n}\nul#nav li a:hover {\n    background-color:#FF4447;\n}\n", ""]);
 
 
 
@@ -25333,15 +25333,14 @@ function (_Component) {
     value: function render() {
       var _this4 = this;
 
-      console.table(this.state);
       var locat = this.state.locations.map(function (currentLocation) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: function onClick() {
             return _this4.loadWeather(currentLocation);
-          }
+          },
+          key: currentLocation.cityCode
         }, " ", currentLocation.name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       });
-      console.table(this.state.currentLocation);
       var city = this.state.currentLocation;
       var query = "/api/favourites/add?city=" + city.id;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -25349,7 +25348,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "App-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Weather!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "cities"
+        htmlFor: "cities"
       }, "Search for a location "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         id: "location"
@@ -25498,7 +25497,7 @@ function (_Component) {
       var description = this.props.description;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "WeatherBlock"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, cityName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, temperature, " \xB0C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, weather, " , ", description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, pressure, " hPa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, humidity, " %")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, cityName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, temperature, " \xB0C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, weather, ", ", description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Pressure ", pressure, " hPa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Humidity ", humidity, " %")));
     }
   }]);
 
@@ -25558,6 +25557,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(WeatherBlockList).call(this));
     _this.state = {
       cities: {
+        cnt: 0,
         list: []
       }
     };
@@ -25580,9 +25580,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      console.table(this.state.cities);
       var citie = this.state.cities.list.map(function (city) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_WeatherBlock__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: city.cityCode,
           cityName: city.name,
           pressure: city.main.pressure,
           humidity: city.main.humidity,

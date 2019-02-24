@@ -7,6 +7,7 @@ class WeatherBlockList extends Component {
     super();
     this.state = {
       cities: {
+        cnt:0,
         list:[
 
         ]
@@ -19,9 +20,11 @@ class WeatherBlockList extends Component {
     .then(cities => this.setState({cities}))
   }
   render() {
-    console.table(this.state.cities);
     const citie = this.state.cities.list.map((city) =>
-      <WeatherBlock cityName={city.name} pressure={city.main.pressure} humidity={city.main.humidity} description={city.weather[0].description} temperature={city.main.temp} weather={city.weather[0].main} />
+      <WeatherBlock key={city.cityCode} cityName={city.name}
+      pressure={city.main.pressure} humidity={city.main.humidity}
+      description={city.weather[0].description}
+      temperature={city.main.temp} weather={city.weather[0].main} />
     );
     return (
       <div className="WeatherBlocks">

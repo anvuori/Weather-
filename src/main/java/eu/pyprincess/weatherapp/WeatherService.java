@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
 @Service
 public class WeatherService {
 
-    //todo: docs!!!
-
     // API key from the property file
     @Value("${weather.api.key}")
     private String apiKey;
@@ -35,7 +33,6 @@ public class WeatherService {
         String line;
         StringBuffer response = new StringBuffer();
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
             response.append(line);
         }
         return response.toString();
@@ -60,7 +57,6 @@ public class WeatherService {
         String line;
         StringBuffer response = new StringBuffer();
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
             response.append(line);
         }
         return response.toString();

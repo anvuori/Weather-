@@ -68,3 +68,9 @@ Unit and integration tests.
 ### Test data
 
 Demo loads automatically in-memory location data from [json](http://bulk.openweathermap.org/sample/city.list.json.gz).
+
+## Future improvements
+
+* React local storage to save favourite cities
+* Exception handling to the REST API
+* 

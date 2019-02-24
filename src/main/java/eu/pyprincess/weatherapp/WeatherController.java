@@ -33,7 +33,7 @@ public class WeatherController {
         try {
             response = weatherservice.askWeatherByList(cities);
         } catch (Exception e){
-            response = "Cannot find data!";
+            response = "{\"list\":[]}";
         }
         return response;
     }
@@ -65,7 +65,7 @@ public class WeatherController {
         try {
             response = weatherservice.askWeatherByCityCode(city);
         } catch (Exception e){
-            response = "Cannot find data!";
+            response = "[]";
         }
         return response;
     }
