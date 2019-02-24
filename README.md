@@ -1,18 +1,29 @@
-# WeatherDemo with Spring Boot
+# WeatherApp with Spring Boot and React
 
 An application to check the weather in the wanted location and save your favourite locations.
-The app uses weather data from [OpenWeatherMap](https://openweathermap.org/current).
+The app uses weather data from [OpenWeatherMap](https://openweathermap.org/current). The app has GitHub OAuth.
 
 ## How to build
-React test build ```npm start```
+
+Clone repository and run
+
+`mvn clean package`
 
 
 ## How to use
+
+Weatherapp UI runs in `http://localhost:8080/`. First, you need to authenticate using a GitHub profile.
+
+The front page contains two columns; first one lists the weather data of your favourite locations (you have none at first).
+
+In the second column you can search locations writing a part of the city name to the textfield. There will be buttons of locations containing your search and by pressing them you see their weather data and can add it to your favourites.
 
 
 ## What it contains
 
 ### API documentation
+
+REST api can be accessed in `localhost:8080/api/`
 
 #### GET /api/location
 
@@ -57,11 +68,3 @@ Unit and integration tests.
 ### Test data
 
 Demo loads automatically in-memory location data from [json](http://bulk.openweathermap.org/sample/city.list.json.gz).
-
-### Server side
-
-REST api can be accessed in `localhost:8080/api/`
-
-### Client side
-
-Client is built with React and runs in port `localhost:3000`.
