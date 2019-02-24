@@ -12,3 +12,4 @@ security:
       userInfoUri: https://api.github.com/user
 
 weather.api.key: aa4880fc9d780e9d2c506a590d8907bc
+

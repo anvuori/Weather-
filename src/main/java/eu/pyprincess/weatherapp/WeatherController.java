@@ -18,6 +18,8 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherservice;
 
+
+
     /**
      * Return weather data of user's favourite cities
      * @param principal
@@ -76,11 +78,12 @@ public class WeatherController {
      * @param principal
      */
     @RequestMapping(value="/api/favourites/add", method= RequestMethod.GET, produces="application/json")
-    public void addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
+    public String addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
         City city = cityrepo.getOne(cityCode);
         WeatherUser user = getUser(principal);
         user.addCity(city);
         userrepo.save(user);
+        return "OK";
     }
 
     /**

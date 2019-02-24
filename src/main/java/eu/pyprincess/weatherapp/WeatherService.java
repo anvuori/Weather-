@@ -26,7 +26,7 @@ public class WeatherService {
      */
     public String askWeatherByCityCode(City city) throws Exception{
         HttpURLConnection connection = null;
-        String stringurl = "https://api.openweathermap.org/data/2.5/weather?id=" + city.getCityCode() + "&appid=" + this.apiKey;
+        String stringurl = "https://api.openweathermap.org/data/2.5/weather?id=" + city.getCityCode() + "&units=metric&appid=" + this.apiKey;
         URL url = new URL(stringurl);
         connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
