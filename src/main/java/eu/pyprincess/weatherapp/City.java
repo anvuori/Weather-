@@ -9,18 +9,16 @@ public class City {
 
     /* Class variables */
     private String name;
-    private int cityCode;
+    @Id
+    private Long cityCode;
     @ManyToOne
     private Country country;
     private double lon;
     private double lat;
-    @Id
-    @GeneratedValue
-    private Long id;
 
     public City(){}
 
-    public City(String name, int cityCode, Country country, double lon, double lat) {
+    public City(String name, Long cityCode, Country country, double lon, double lat) {
         this.name = name;
         this.cityCode = cityCode;
         this.country = country;
@@ -39,16 +37,12 @@ public class City {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-
-    public int getCityCode() {
+    public Long getCityCode() {
         return cityCode;
     }
 
-    public void setCityCode(int cityCode) {
+    public void setCityCode(Long cityCode) {
         this.cityCode = cityCode;
     }
 

@@ -1,17 +1,15 @@
 package eu.pyprincess.weatherapp;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.List;
 
 @Entity
 public class WeatherUser {
+    @Id
     private String name;
     private List<City> favouriteCities;
-    @Id
-    @GeneratedValue
-    private Long id;
+
 
     public WeatherUser(){}
 
@@ -44,9 +42,6 @@ public class WeatherUser {
         this.favouriteCities = favouriteCities;
     }
 
-    public Long getId() {
-        return id;
-    }
 
 
 }
