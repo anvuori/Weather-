@@ -36,6 +36,7 @@ loadWeather(currentLocation){
   );
     console.table(this.state.currentLocation);
     const city = this.state.currentLocation;
+    const query = "/api/favourites/add?city=" + city.id;
     return (
       <div className="App">
         <header className="App-header">
@@ -50,6 +51,9 @@ loadWeather(currentLocation){
             </div>
             {city.name &&
             <WeatherBlock cityName={city.name} temperature={city.main.temp} weather={city.weather[0].main} />
+            }
+            {city.name &&
+            <a href={query} >Favourite</a>
             }
         </header>
       </div>
