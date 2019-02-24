@@ -4,6 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CityTest {
+
+    /**
+     * Tests creating a city.
+     */
     @Test
     public void createCity() {
         City city = new City("Tampere",  634964L, new Country("FI"), 123, 122);

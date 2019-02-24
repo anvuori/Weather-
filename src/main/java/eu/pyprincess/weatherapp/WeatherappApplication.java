@@ -41,14 +41,14 @@ class DataGenerator implements CommandLineRunner{
         JSONTokener parser = new JSONTokener(Thread.currentThread().getContextClassLoader().getResourceAsStream("city.list.json"));
         JSONArray locations = new JSONArray(parser);
         for(Object o : locations){
-        JSONObject obj = (JSONObject) o;
-        JSONObject coord = ((JSONObject) o).getJSONObject("coord");
-        double lon = ((Number)coord.get("lon")).doubleValue();
-        double lat = ((Number)coord.get("lat")).doubleValue();
-        Country country = new Country(obj.get("country").toString());
-        countryrepo.save(country);
-        City city = new City(obj.get("name").toString(), (int) obj.get("id"), country, lon, lat);
-        cityrepo.save(city);
+            JSONObject obj = (JSONObject) o;
+            JSONObject coord = ((JSONObject) o).getJSONObject("coord");
+            double lon = ((Number)coord.get("lon")).doubleValue();
+            double lat = ((Number)coord.get("lat")).doubleValue();
+            Country country = new Country(obj.get("country").toString());
+            countryrepo.save(country);
+            City city = new City(obj.get("name").toString(), Long.valueOf((int)obj.get("id")), country, lon, lat);
+            cityrepo.save(city);
         }
     }
 

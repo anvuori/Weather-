@@ -23,8 +23,13 @@ public class WeatherController {
     public String favouriteCityData(Principal principal){
         WeatherUser user = getUser(principal);
         List<City> cities = user.getFavouriteCities();
-        // API call for several cities
-        return null;
+        String response;
+        try {
+            response = weatherservice.askWeatherByList(cities);
+        } catch (Exception e){
+            response = "Cannot find data!";
+        }
+        return response;
     }
 
 
