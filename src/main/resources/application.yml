@@ -1,0 +1,14 @@
+security:
+  oauth2:
+    client:
+      clientId: 2bb576f31f8a4b016cd4
+      clientSecret: 759fc6c531dee3af333a6a182afb55c8ca0070dc
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://api.github.com/user
+
+weather.api.key: aa4880fc9d780e9d2c506a590d8907bc
