@@ -2,8 +2,6 @@ package eu.pyprincess.weatherapp;
 
 public class Controller {
 
-    // AUTH
-
     // Give weather data of the favourite cities
 
 
