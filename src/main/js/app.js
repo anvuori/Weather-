@@ -12,6 +12,7 @@ class App extends Component {
     };
     this.search = this.search.bind(this);
     this.loadWeather = this.loadWeather.bind(this);
+    this.favourite = this.favourite.bind(this);
   }
 
 search(){
@@ -25,7 +26,10 @@ loadWeather(currentLocation){
   fetch("/api/weather?cityCode=" + currentLocation.cityCode)
   .then(response => response.json())
   .then(cities => this.setState({currentLocation: cities}))
+}
 
+favourite(cityCode){
+  fetch("/api/favourites/add?city=" + cityCode);
 }
 
   render() {
@@ -34,7 +38,6 @@ loadWeather(currentLocation){
   )
   );
     const city = this.state.currentLocation;
-    const query = "/api/favourites/add?city=" + city.id;
     return (
       <div className="App">
         <header className="App-header">
@@ -48,10 +51,12 @@ loadWeather(currentLocation){
               </p>
             </div>
             {city.name &&
-              <WeatherBlock cityName={city.name} pressure={city.main.pressure} humidity={city.main.humidity} description={city.weather[0].description} temperature={city.main.temp} weather={city.weather[0].main} />
+              <WeatherBlock  cityCode={city.id} cityName={city.name} pressure={city.main.pressure} 
+              humidity={city.main.humidity} description={city.weather[0].description}
+              temperature={city.main.temp} weather={city.weather[0].main} />
             }
             {city.name &&
-            <a href={query} >Favourite</a>
+            <button onClick={() => this.favourite(city.id)} >Favourite</button>
             }
         </header>
       </div>

@@ -22,7 +22,6 @@ class WeatherBlock extends Component {
             <li>{weather}, {description}</li>
             <li>Pressure {pressure} hPa</li>
             <li>Humidity {humidity} %</li>
-            <li>Key {cityCode} </li>
             </ul>
             <button onClick={() => this.remove(cityCode)}>Remove from favourites</button>
       </div>

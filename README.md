@@ -18,6 +18,8 @@ The front page contains two columns; first one lists the weather data of your fa
 
 In the second column you can search locations writing a part of the city name to the textfield. There will be buttons of locations containing your search and by pressing them you see their weather data and can add it to your favourites.
 
+Favouriting and removing a favourite does not reload the page so you need to reload manually.
+
 
 ## What it contains
 
@@ -95,10 +97,7 @@ Unit and integration tests.
 
 Demo loads automatically in-memory location data from [city.list.json](http://bulk.openweathermap.org/sample/city.list.json.gz).
 
-## Future improvements
+## Future improvements and insights
 
-* React local storage to save favourite cities
-* Exception handling to the REST API
-* Return Http Responses instead of strings in the REST API.
-* Remove API key and Authentication client secret and replace it with a dummy
+[developer-diary.md](https://https://github.com/anvuori/Weather-/developer-diary.md)
 * Docker
