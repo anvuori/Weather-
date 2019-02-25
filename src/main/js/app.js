@@ -40,25 +40,28 @@ favourite(cityCode){
     const city = this.state.currentLocation;
     return (
       <div className="App">
-        <header className="App-header">
+
           <h1>Weather!</h1>
             <div>
               <label htmlFor="cities">Search for a location </label>
               <input type="text" id="location" /><br/>
               <input type="button" onClick={this.search} value="Search" />
+
               <p id="locationTarget">
                 {locat}
               </p>
             </div>
             {city.name &&
-              <WeatherBlock  cityCode={city.id} cityName={city.name} pressure={city.main.pressure} 
+              <WeatherBlock  cityCode={city.id} cityName={city.name} pressure={city.main.pressure}
               humidity={city.main.humidity} description={city.weather[0].description}
               temperature={city.main.temp} weather={city.weather[0].main} />
             }
             {city.name &&
+              <p>
             <button onClick={() => this.favourite(city.id)} >Favourite</button>
+            </p>
             }
-        </header>
+
       </div>
     );
   }
