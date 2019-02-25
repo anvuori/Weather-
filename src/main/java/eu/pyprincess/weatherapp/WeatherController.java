@@ -1,6 +1,9 @@
 package eu.pyprincess.weatherapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,7 +66,7 @@ public class WeatherController {
         try {
             response = weatherservice.askWeatherByCityCode(city);
         } catch (Exception e){
-            response = "[]";
+            response = "{}";
         }
         return response;
     }
@@ -76,12 +79,17 @@ public class WeatherController {
      * @param principal
      */
     @RequestMapping(value="/api/favourites/add", method= RequestMethod.GET, produces="application/json")
-    public String addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
-        City city = cityrepo.getOne(cityCode);
-        WeatherUser user = getUser(principal);
-        user.addCity(city);
-        userrepo.save(user);
-        return "OK";
+    public ResponseEntity addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
+        if(cityrepo.existsById(cityCode)) {
+            City city = cityrepo.getOne(cityCode);
+            WeatherUser user = getUser(principal);
+            if(!user.hasCity(city)) {
+                user.addCity(city);
+                userrepo.save(user);
+            }
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -90,12 +98,18 @@ public class WeatherController {
      * @param principal
      */
     @RequestMapping(value="/api/favourites/remove", method= RequestMethod.GET, produces="application/json")
-    public void removeCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
-        String username = principal.getName();
-        City city = cityrepo.getOne(cityCode);
-        WeatherUser user = userrepo.getOne(username);
-        user.removeCity(city);
-        userrepo.save(user);
+    public ResponseEntity removeCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
+        if(cityrepo.existsById(cityCode)) {
+            String username = principal.getName();
+            City city = cityrepo.getOne(cityCode);
+            WeatherUser user = userrepo.getOne(username);
+            if(user.hasCity(city)) {
+                user.removeCity(city);
+                userrepo.save(user);
+            }
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     /**

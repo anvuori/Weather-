@@ -25,6 +25,16 @@ public class WeatherUser {
     }
 
     /**
+     * Checks if the user has the given city as a favourite
+     *
+     * @param city
+     * @return True if has, False if not
+     */
+    public boolean hasCity(City city){
+      return favouriteCities.contains(city);
+    }
+
+    /**
      * Adds a favourite city to the user
      * @param city
      */
