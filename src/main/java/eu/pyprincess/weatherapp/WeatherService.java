@@ -9,6 +9,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * WeatherService communicates with OpenWeatherMap.
+ */
 @Service
 public class WeatherService {
 

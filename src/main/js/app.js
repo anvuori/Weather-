@@ -15,23 +15,23 @@ class App extends Component {
     this.favourite = this.favourite.bind(this);
   }
 
-search(){
+  search(){
     let param = document.getElementById("location").value
     fetch("/api/location?search=" + param)
     .then(response => response.json())
     .then(locations => this.setState({locations}))
   }
 
-loadWeather(currentLocation){
-  fetch("/api/weather?cityCode=" + currentLocation.cityCode)
-  .then(response => response.json())
-  .then(cities => this.setState({currentLocation: cities}))
-}
+  loadWeather(currentLocation){
+    fetch("/api/weather?cityCode=" + currentLocation.cityCode)
+    .then(response => response.json())
+    .then(cities => this.setState({currentLocation: cities}))
+  }
 
-favourite(cityCode){
-  fetch("/api/favourites/add?city=" + cityCode);
-  window.location.reload();
-}
+  favourite(cityCode){
+    fetch("/api/favourites/add?city=" + cityCode);
+    window.location.reload();
+  }
 
   render() {
     const locat = this.state.locations.map((currentLocation) => (
@@ -59,8 +59,8 @@ favourite(cityCode){
             }
             {city.name &&
               <p>
-            <button onClick={() => this.favourite(city.id)} >Favourite</button>
-            </p>
+              <button onClick={() => this.favourite(city.id)} >Favourite</button>
+              </p>
             }
 
       </div>

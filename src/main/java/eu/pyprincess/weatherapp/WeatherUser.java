@@ -6,6 +6,10 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * WeatherUser represents a user of the app.
+ * It is used to keep track of favourite locations/cities.
+ */
 @Entity
 public class WeatherUser {
     @Id

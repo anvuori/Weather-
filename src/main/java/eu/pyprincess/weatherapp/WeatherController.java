@@ -11,6 +11,9 @@ import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * WeatherController creates REST API for the weather and location data. Requires authentication.
+ */
 @RestController
 public class WeatherController {
     @Autowired

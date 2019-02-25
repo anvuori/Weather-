@@ -13,4 +13,5 @@
 * Return Data Transfer Objects instead of String
 * A global state to react instead of component states
 * Remove API key and Authentication client secret and replace it with a dummy
+* Adding a real database to avoid loading location data during every start
 * Docker
