@@ -7,7 +7,7 @@ The app uses weather data from [OpenWeatherMap](https://openweathermap.org/curre
 
 Clone repository and run
 
-`mvn clean package`
+`mvn clean spring-boot:run`
 
 
 ## How to use
@@ -18,7 +18,7 @@ The front page contains two columns; first one lists the weather data of your fa
 
 In the second column you can search locations writing a part of the city name to the textfield. There will be buttons of locations containing your search and by pressing them you see their weather data and can add it to your favourites.
 
-Favouriting and removing a favourite does not reload the page so you need to reload manually.
+Favouriting and removing a favourite reloads the page.
 
 
 ## What it contains
@@ -91,7 +91,11 @@ Returns status code 200 (OK) if the city was removed or didn't already exists. R
 
 ### Tests
 
-Unit and integration tests.
+**Citytest** - Unit tests to the class City
+
+**WeatherUserTest** - Unit tests to the class WeatherUser.
+
+**WeatherappApplicationTests** - Tests controllers and WeatherService
 
 ### Test data
 
@@ -99,5 +103,4 @@ Demo loads automatically in-memory location data from [city.list.json](http://bu
 
 ## Future improvements and insights
 
-[developer-diary.md](https://https://github.com/anvuori/Weather-/developer-diary.md)
-* Docker
+[developer-diary.md](https://github.com/anvuori/Weather-/blob/master/developer-diary.md)

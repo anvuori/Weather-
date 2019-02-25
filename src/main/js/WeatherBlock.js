@@ -4,7 +4,7 @@ import './App.css';
 class WeatherBlock extends Component {
   remove(cityCode){
     fetch("/api/favourites/remove?city=" + cityCode);
-    console.log(cityCode);
+    window.location.reload();
   }
   render() {
     let cityName = this.props.cityName;

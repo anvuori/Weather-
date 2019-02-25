@@ -30,6 +30,7 @@ loadWeather(currentLocation){
 
 favourite(cityCode){
   fetch("/api/favourites/add?city=" + cityCode);
+  window.location.reload();
 }
 
   render() {

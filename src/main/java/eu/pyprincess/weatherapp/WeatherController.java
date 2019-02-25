@@ -1,7 +1,6 @@
 package eu.pyprincess.weatherapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class WeatherController {
 
     /**
      * Return weather data of user's favourite cities
-     * @param principal
+     * @param principal -authenticated user
      * @return Weather data json of several cities as a string
      */
     @RequestMapping(value="/api/favourites/weather", method= RequestMethod.GET, produces="application/json")
@@ -71,12 +70,10 @@ public class WeatherController {
         return response;
     }
 
-    // todo: Search weather data by the favourite city code
-
     /**
      * Adds the user a new favourite city
      * @param cityCode - the city id
-     * @param principal
+     * @param principal - authenticated user
      */
     @RequestMapping(value="/api/favourites/add", method= RequestMethod.GET, produces="application/json")
     public ResponseEntity addCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
@@ -94,8 +91,8 @@ public class WeatherController {
 
     /**
      * Removes the city id from the user
-     * @param cityCode -the city id
-     * @param principal
+     * @param cityCode - the city id
+     * @param principal - authenticated user
      */
     @RequestMapping(value="/api/favourites/remove", method= RequestMethod.GET, produces="application/json")
     public ResponseEntity removeCity(@RequestParam(value = "city", required = true) Long cityCode, Principal principal){
@@ -114,7 +111,7 @@ public class WeatherController {
 
     /**
      * Returns the username of the user if it exists. Creates the user if doesn't.
-     * @param principal
+     * @param principal - authenticated user
      * @return WeatherUser
      */
     public WeatherUser getUser(Principal principal){
@@ -130,5 +127,4 @@ public class WeatherController {
         }
         return user;
     }
-
 }

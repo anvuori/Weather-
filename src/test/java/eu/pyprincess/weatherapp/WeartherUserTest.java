@@ -20,6 +20,18 @@ public class WeartherUserTest {
     }
 
     /**
+     * Tests hasCity()
+     *
+     */
+    @Test
+    public void testHasCity() {
+        City city = new City("Tampere",  634964L, new Country("FI"), 123, 122);
+        WeatherUser user = new WeatherUser("TestUser");
+        user.addCity(city);
+        Assert.assertEquals(user.hasCity(city), true);
+    }
+
+    /**
      * Tests removing a favourite city from the city list
      */
     @Test

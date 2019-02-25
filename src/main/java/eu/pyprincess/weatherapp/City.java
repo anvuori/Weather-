@@ -1,6 +1,6 @@
 package eu.pyprincess.weatherapp;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -18,6 +18,14 @@ public class City {
 
     public City(){}
 
+    /**
+     * Constructor
+     * @param name
+     * @param cityCode - city id
+     * @param country
+     * @param lon - coordinate longitude
+     * @param lat - coordinate latitude
+     */
     public City(String name, Long cityCode, Country country, double lon, double lat) {
         this.name = name;
         this.cityCode = cityCode;
@@ -25,7 +33,6 @@ public class City {
         this.lon = lon;
         this.lat = lat;
     }
-
 
     /* GETTERS AND SETTERS */
 
@@ -37,7 +44,6 @@ public class City {
         this.name = name;
     }
 
-
     public Long getCityCode() {
         return cityCode;
     }
@@ -45,7 +51,6 @@ public class City {
     public void setCityCode(Long cityCode) {
         this.cityCode = cityCode;
     }
-
 
     public Country getCountry() {
         return country;
@@ -70,6 +75,4 @@ public class City {
     public void setLat(double lat) {
         this.lat = lat;
     }
-
-
 }

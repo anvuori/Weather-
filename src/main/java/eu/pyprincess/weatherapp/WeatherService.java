@@ -17,10 +17,9 @@ public class WeatherService {
     private String apiKey;
 
     /**
-     *  Makes an api call to get weather data by city code
+     *  Makes an api call to get weather data of the one location by city code
      * @param city
      * @return Weather data json as a string
-     * @exception Exception
      */
     public String askWeatherByCityCode(City city) throws Exception{
         HttpURLConnection connection = null;
@@ -42,7 +41,6 @@ public class WeatherService {
      *  Makes an api call to get weather data by several city codes
      * @param cityList - list of cities
      * @return Weather data json as a string
-     * @exception Exception
      */
     public String askWeatherByList(List<City> cityList) throws Exception{
 

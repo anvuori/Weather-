@@ -9,18 +9,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableOAuth2Sso
 public class WeatherappApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(WeatherappApplication.class, args);
 	}
-
 }
 
 /**
@@ -39,8 +34,7 @@ class DataGenerator implements CommandLineRunner{
     public void run(String... args) throws Exception {
         readCitiesFromJson();
     }
-
-
+    
     /**
      *  Loads location data from the json-file in resources-directory.
      */

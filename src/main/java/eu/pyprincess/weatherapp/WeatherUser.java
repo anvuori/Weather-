@@ -13,7 +13,6 @@ public class WeatherUser {
     @OneToMany
     private List<City> favouriteCities = new ArrayList<>();
 
-
     public WeatherUser(){}
 
     /**
@@ -26,9 +25,8 @@ public class WeatherUser {
 
     /**
      * Checks if the user has the given city as a favourite
-     *
      * @param city
-     * @return True if has, False if not
+     * @return true if has, false if not
      */
     public boolean hasCity(City city){
       return favouriteCities.contains(city);
@@ -67,7 +65,5 @@ public class WeatherUser {
     public void setFavouriteCities(List<City> favouriteCities) {
         this.favouriteCities = favouriteCities;
     }
-
-
 
 }
