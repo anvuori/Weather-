@@ -14,6 +14,7 @@ class WeatherBlockList extends Component {
       },
     };
   }
+
   componentDidMount(){
     fetch("/api/favourites/weather")
     .then(response => response.json())
@@ -21,10 +22,11 @@ class WeatherBlockList extends Component {
   }
   render() {
     const citie = this.state.cities.list.map((city) =>
-      <WeatherBlock key={city.cityCode} cityName={city.name}
+      <WeatherBlock key={city.id} cityCode={city.id} cityName={city.name}
       pressure={city.main.pressure} humidity={city.main.humidity}
       description={city.weather[0].description}
       temperature={city.main.temp} weather={city.weather[0].main} />
+
     );
     return (
       <div className="WeatherBlocks">
